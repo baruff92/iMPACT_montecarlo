@@ -45,6 +45,28 @@
     }
   };
 
+  void calorimeter::show_latches_state()
+  {
+    int i=0;
+    for (auto p: latches_state)
+    {
+      std::cout << i;
+      if(i<10) std::cout << " ";
+      if(i%2==0) std::cout << " X [ ";
+      if(i%2==1) std::cout << " Y [ ";
+
+      for(auto ch: p)
+      {
+        if(ch!=0) std::cout << "\033[91m" ;
+        std::cout << ch << " " ;
+        std::cout << "\033[0m " ;
+      }
+      if(i%2==1) std::cout << "]"<< std::endl;
+      if(i%2==0) std::cout << "]  ";
+      i++;
+    }
+  };
+
   void calorimeter::reset_all()
   {
     for (auto& p: calo_occupancy)
@@ -68,7 +90,7 @@
     for(int i=0; i<particle.getNumberOfSingles(); i++)
     {
 //      std::cout << "    " << level2ID[i] << " " << level3ID[i] << std::endl;
-      // if(energy[i]<=lowest_threshold) continue;
+      if(energy[i]<=lowest_threshold) continue;
       calo_occupancy[level2ID[i]][level3ID[i]]++;
     }
   };
@@ -81,6 +103,14 @@
 
   void calorimeter::clock_the_calorimeter()
   {
-    // here we update the latches states
+    timestamp_counter++;
 
+    // here we update the latches states
+    for(int pl=0; pl<number_of_planes; pl++)
+    {
+      for(int fn=0; fn<fingers_per_plane; fn++)
+      {
+        if()  
+      }
+    }
   };

@@ -16,10 +16,12 @@ std::vector<float> event_dictionary::GetEnergy()
 {
   return energy;
 }
+
 std::vector<unsigned int> event_dictionary::GetLevel2ID()
 {
   return level2ID;
 }
+
 std::vector<unsigned int> event_dictionary::GetLevel3ID()
 {
   return level3ID;

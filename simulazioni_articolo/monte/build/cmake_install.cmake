@@ -1,4 +1,4 @@
-# Install script for directory: /home/gate/cernbox/iMPACT_Filippo/simulazioni_articolo/monte
+# Install script for directory: /home/gate/Desktop/iMPACT_montecarlo/simulazioni_articolo/monte
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/gate/cernbox/iMPACT_Filippo/simulazioni_articolo/monte/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/gate/Desktop/iMPACT_montecarlo/simulazioni_articolo/monte/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
