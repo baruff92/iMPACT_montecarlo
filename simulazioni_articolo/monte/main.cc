@@ -189,11 +189,10 @@ int main()
 		unsigned int number_of_clock_cycles = 0;
 		unsigned int particle_index= 0;
 
-		while (lab_time<=timestamp_vec.back()+clock_cycle)
+		while (lab_time<=timestamp_vec.back()+3*clock_cycle)
 		{
 
 			std::cout << "Cycle: " << number_of_clock_cycles << " : " << lab_time << " s" << std::endl;
-
 			// Search if a particle arrived in the previous clock cycle
 			for(unsigned int j=particle_index; j<timestamp_vec.size(); j++)
 			{
@@ -201,7 +200,8 @@ int main()
 				{
 					std::cout << "	I found at: " << timestamp_vec[j] << " s particle # " << events_from_dic_vec[j] << " j: " << j << std::endl;
 					particle_index = j+1;
-					my_calo.add_particle(dict[events_from_dic_vec[j]]);
+					int hits_added = my_calo.add_particle(dict[events_from_dic_vec[j]]);
+					std::cout<<"hits_added:" << hits_added << std::endl;	
 					my_calo.show_occupancy();
 					// my_calo.reset_all();
 				}
@@ -212,6 +212,8 @@ int main()
 					break;
 				}
 			}
+			my_calo.clock_the_calorimeter();
+			my_calo.show_latches_state();
 
 			// std::cout << "	particle_index: " << particle_index << std::endl;
 			number_of_clock_cycles++;

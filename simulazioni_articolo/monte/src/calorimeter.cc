@@ -78,12 +78,13 @@
     }
   };
 
-  void calorimeter::add_particle(event_dictionary particle)
+  int calorimeter::add_particle(event_dictionary particle)
   {
     float lowest_threshold = 1.25; // MeV
     auto energy = particle.GetEnergy();
     auto level2ID = particle.GetLevel2ID();
     auto level3ID = particle.GetLevel3ID();
+    int hits_added = 0;
 
     std::cout << "  Singles: " << particle.getNumberOfSingles() << std::endl;
     // Load all signals over threshold in the calorimeter
@@ -92,7 +93,9 @@
 //      std::cout << "    " << level2ID[i] << " " << level3ID[i] << std::endl;
       if(energy[i]<=lowest_threshold) continue;
       calo_occupancy[level2ID[i]][level3ID[i]]++;
+      hits_added++;
     }
+    return hits_added;
   };
 
   const std::vector<std::vector<int>> calorimeter::getOccupancy() const
@@ -110,7 +113,14 @@
     {
       for(int fn=0; fn<fingers_per_plane; fn++)
       {
-        if()  
+        if(latches_state[pl][fn]==-1)
+        {
+          latches_state[pl][fn]=1;
+        }
+        if(calo_occupancy[pl][fn]>0 && latches_state[pl][fn]==0)
+        {
+          latches_state[pl][fn]=-1;
+        }
       }
     }
   };

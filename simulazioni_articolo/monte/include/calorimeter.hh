@@ -15,7 +15,7 @@ private:
   int timestamp_counter = 0;
 
   std::vector<std::vector<int>> calo_occupancy;
-  std::vector<std::vector<int>> latches_state; // 0 if empty; -1 if waiting; +1 if particle
+  std::vector<std::vector<int>> latches_state; // 0 if empty; -1 if listening; +1 if particle
   std::vector<fpga> fpga_v;
 
 
@@ -25,7 +25,7 @@ public:
   void show_occupancy();
   void show_latches_state();
   void reset_all();
-  void add_particle(event_dictionary particle);
+  int add_particle(event_dictionary particle);
 
   const std::vector<std::vector<int>> getOccupancy() const;
 
