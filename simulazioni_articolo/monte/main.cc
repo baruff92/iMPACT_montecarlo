@@ -201,7 +201,6 @@ int main()
 					std::cout << "	I found at: " << timestamp_vec[j] << " s particle # " << events_from_dic_vec[j] << " j: " << j << std::endl;
 					particle_index = j+1;
 					int hits_added = my_calo.add_particle(dict[events_from_dic_vec[j]]);
-					std::cout<<"hits_added:" << hits_added << std::endl;	
 					my_calo.show_occupancy();
 					// my_calo.reset_all();
 				}

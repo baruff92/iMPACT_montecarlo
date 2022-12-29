@@ -20,7 +20,12 @@
               << number_of_planes*0.5 << " cm x ("
               << fingers_per_plane << " x " << fingers_per_plane << ") cm^2 ]" << std::endl;
 
-    fpga_v = std::vector<fpga>(number_of_planes*fingers_per_plane/20);
+    std::cout << "To build this calorimeter we need " << number_of_fpga << " FPGAs" << std::endl;
+    for(int i=0; i<number_of_fpga; i++)
+    {
+      fpga t_fpga(i);
+      fpga_v.push_back(t_fpga);
+    }
   };
 
   void calorimeter::show_occupancy()
@@ -57,7 +62,7 @@
 
       for(auto ch: p)
       {
-        if(ch!=0) std::cout << "\033[91m" ;
+        if(ch!=0) std::cout << "\033[92m" ;
         std::cout << ch << " " ;
         std::cout << "\033[0m " ;
       }
@@ -108,7 +113,17 @@
   {
     timestamp_counter++;
 
+    // here we clock the FPGA i.e. the State Machines
+    std::cout << "FPGA are reading SiPM:" << std::endl;
+    for(auto f: fpga_v)
+    {
+      f.posedge_clk();
+      std::cout << "#" << f.getFPGAindex() << ":" << f.getSiPMnumber() << " ";
+    }
+    std::cout << std::endl;
+
     // here we update the latches states
+    // (after the FPGAs, changes will be detected the next clock posedge)
     for(int pl=0; pl<number_of_planes; pl++)
     {
       for(int fn=0; fn<fingers_per_plane; fn++)
@@ -123,4 +138,5 @@
         }
       }
     }
+
   };

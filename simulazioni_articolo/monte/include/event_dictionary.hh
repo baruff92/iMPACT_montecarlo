@@ -16,5 +16,4 @@ public:
   std::vector<float> GetEnergy();
   std::vector<unsigned int> GetLevel2ID();  // TODO try with const
   std::vector<unsigned int> GetLevel3ID();
-
 };
