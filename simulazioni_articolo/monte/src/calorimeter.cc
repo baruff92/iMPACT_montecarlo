@@ -23,9 +23,11 @@
     std::cout << "To build this calorimeter we need " << number_of_fpga << " FPGAs" << std::endl;
     for(int i=0; i<number_of_fpga; i++)
     {
-      fpga t_fpga(i);
+      fpga t_fpga(i, number_of_planes, fingers_per_plane);
       fpga_v.push_back(t_fpga);
+      fpga_v[i].which_ch_do_u_see();
     }
+
   };
 
   void calorimeter::show_occupancy()
@@ -63,7 +65,8 @@
       for(auto ch: p)
       {
         if(ch!=0) std::cout << "\033[92m" ;
-        std::cout << ch << " " ;
+        if(ch==-1) std::cout << "x " ;
+        else std::cout << ch << " " ;
         std::cout << "\033[0m " ;
       }
       if(i%2==1) std::cout << "]"<< std::endl;
@@ -115,7 +118,7 @@
 
     // here we clock the FPGA i.e. the State Machines
     std::cout << "FPGA are reading SiPM:" << std::endl;
-    for(auto f: fpga_v)
+    for(auto& f: fpga_v)
     {
       f.posedge_clk();
       std::cout << "#" << f.getFPGAindex() << ":" << f.getSiPMnumber() << " ";

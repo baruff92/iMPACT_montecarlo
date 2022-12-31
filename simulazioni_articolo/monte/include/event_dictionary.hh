@@ -11,9 +11,9 @@ private:
 public:
   void add_event(float en, unsigned int l2ID, unsigned int l3ID);
 
-  int getNumberOfSingles();
+  int getNumberOfSingles() const;
 
-  std::vector<float> GetEnergy();
-  std::vector<unsigned int> GetLevel2ID();  // TODO try with const
-  std::vector<unsigned int> GetLevel3ID();
+  std::vector<float> GetEnergy() const;
+  std::vector<unsigned int> GetLevel2ID() const;
+  std::vector<unsigned int> GetLevel3ID() const;
 };
