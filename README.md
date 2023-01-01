@@ -26,7 +26,9 @@ Instruction for running:
 Large simulated data samples can be found in:
 - https://drive.google.com/drive/folders/1-FjpKXt9q7yecoqsbaP0zGdATXG1ZP0_?usp=sharing
 
-TODO listening
+TODO
+- (DONE) listening cycle
 - (DONE) why SiPM_number is not updated each clock?
-- indexes mapping
+- (DONE) indexes mapping; also with 16x16 calorimeter
+- read latch content
 - SM states

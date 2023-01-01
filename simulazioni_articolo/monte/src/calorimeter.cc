@@ -121,7 +121,7 @@
     for(auto& f: fpga_v)
     {
       f.posedge_clk();
-      std::cout << "#" << f.getFPGAindex() << ":" << f.getSiPMnumber() << " ";
+      std::cout << "#" << f.getFPGAindex() << ":" << f.getSiPMindex() << "(" << f.getSiPMnumber().first << "," << f.getSiPMnumber().second << ") ";
     }
     std::cout << std::endl;
 

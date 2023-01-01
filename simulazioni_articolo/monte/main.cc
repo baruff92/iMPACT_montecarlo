@@ -70,7 +70,7 @@ int main()
 
   //  IMPORTANT this is the particle rate to simulate
   float particle_rate = 100000; // Hz
-  float number_of_rec_part=10;
+  float number_of_rec_part=20;
   float scan_time = (float)number_of_rec_part/particle_rate; //s
 	float fpga_clock_speed = 1e5; //Hz
 	double clock_cycle = 1/fpga_clock_speed; // s = 100 KHz
@@ -201,7 +201,7 @@ int main()
 					std::cout << "	I found at: " << timestamp_vec[j] << " s particle # " << events_from_dic_vec[j] << " j: " << j << std::endl;
 					particle_index = j+1;
 					int hits_added = my_calo.add_particle(dict[events_from_dic_vec[j]]);
-					my_calo.show_occupancy();
+					// my_calo.show_occupancy();
 					// my_calo.reset_all();
 				}
 
@@ -212,7 +212,7 @@ int main()
 				}
 			}
 			my_calo.clock_the_calorimeter();
-			my_calo.show_latches_state();
+			// my_calo.show_latches_state();
 
 			// std::cout << "	particle_index: " << particle_index << std::endl;
 			number_of_clock_cycles++;

@@ -29,11 +29,16 @@ fpga::fpga(int index, int planes, int f_per_planes)
 void fpga::posedge_clk()
 {
   // std::cout << "reading " << SiPM_number << " ";
-  SiPM_number++%20;
+  SiPM_number = (SiPM_number+1)%20;
   // std::cout << SiPM_number << std::endl;
 }
 
-int fpga::getSiPMnumber() const
+std::pair<int,int> fpga::getSiPMnumber() const
+{
+  return channels_i_see[SiPM_number];
+}
+
+int fpga::getSiPMindex() const
 {
   return SiPM_number;
 }

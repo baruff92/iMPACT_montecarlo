@@ -19,7 +19,8 @@ private:
 public:
   fpga(int index, int planes, int f_per_planes);
   void posedge_clk();
-  int getSiPMnumber() const;
+  std::pair<int,int> getSiPMnumber() const;
+  int getSiPMindex() const;
   int getFPGAindex() const;
   void which_ch_do_u_see();
 };
