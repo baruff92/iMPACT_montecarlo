@@ -201,7 +201,7 @@ int main()
 					std::cout << "	I found at: " << timestamp_vec[j] << " s particle # " << events_from_dic_vec[j] << " j: " << j << std::endl;
 					particle_index = j+1;
 					int hits_added = my_calo.add_particle(dict[events_from_dic_vec[j]]);
-					// my_calo.show_occupancy();
+					my_calo.show_occupancy();
 					// my_calo.reset_all();
 				}
 
@@ -212,7 +212,7 @@ int main()
 				}
 			}
 			my_calo.clock_the_calorimeter();
-			// my_calo.show_latches_state();
+			my_calo.show_latches_state();
 
 			// std::cout << "	particle_index: " << particle_index << std::endl;
 			number_of_clock_cycles++;
