@@ -26,11 +26,11 @@ fpga::fpga(int index, int planes, int f_per_planes)
   }
 }
 
-void fpga::posedge_clk()
+void fpga::posedge_clk(std::vector<std::vector<int>>& latches_state)
 {
   // std::cout << "reading " << SiPM_number << " ";
   SiPM_number = (SiPM_number+1)%20;
-  // std::cout << SiPM_number << std::endl;
+  std::cout << "I see: " << latches_state[channels_i_see[SiPM_number].first][channels_i_see[SiPM_number].second] << std::endl;
 }
 
 std::pair<int,int> fpga::getSiPMnumber() const

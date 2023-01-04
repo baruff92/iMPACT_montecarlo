@@ -18,7 +18,7 @@ private:
 
 public:
   fpga(int index, int planes, int f_per_planes);
-  void posedge_clk();
+  void posedge_clk(std::vector<std::vector<int>>& latches_state);
   std::pair<int,int> getSiPMnumber() const;
   int getSiPMindex() const;
   int getFPGAindex() const;
