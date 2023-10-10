@@ -2,6 +2,7 @@
 # Setup the project
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 project(monte)
+set (CMAKE_CXX_STANDARD 11)
 #----------------------------------------------------------------------------
 # Create the variable for the utility directory.
 #
@@ -21,7 +22,7 @@ file(GLOB sources ./src/*.cc)
 
 file(GLOB headers ./include/*.hh ./include/*.h)
 
- 
+
 #----------------------------------------------------------------------------
 # Add the executable
 #
